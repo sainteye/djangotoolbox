@@ -225,7 +225,7 @@ class DictField(AbstractIterableField):
 
     def _map(self, function, iterable, *args, **kwargs):
         return self._type((key, function(value, *args, **kwargs))
-                          for key, value in iterable.iteritems())
+                          for key, value in iterable.items())
 
     def validate(self, values, model_instance):
         if not isinstance(values, dict):

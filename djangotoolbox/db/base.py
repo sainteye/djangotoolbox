@@ -575,7 +575,7 @@ class NonrelDatabaseOperations(BaseDatabaseOperations):
         value = (
             (subfield.column, self._value_for_db(
                 subvalue, lookup=lookup, *self._convert_as(subfield, lookup)))
-            for subfield, subvalue in value.iteritems())
+            for subfield, subvalue in value.items())
 
         # Cast to a dict, interleave columns with values on a list,
         # serialize, or return a generator.
