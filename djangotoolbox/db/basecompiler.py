@@ -233,7 +233,7 @@ class NonrelQuery(object):
                 raise DatabaseError("This database doesn't support filtering "
                                     "on non-primary key ForeignKey fields.")
 
-            field = (f for f in opts.fields if f.column == column).next()
+            field = next(f for f in opts.fields if f.column == column)
             assert field.rel is not None
 
         value = self._normalize_lookup_value(
