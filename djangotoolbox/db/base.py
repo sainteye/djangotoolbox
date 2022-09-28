@@ -1,3 +1,5 @@
+import six
+
 from django.utils.six.moves import cPickle as pickle
 import datetime
 
@@ -459,7 +461,7 @@ class NonrelDatabaseOperations(BaseDatabaseOperations):
                 value = (
                     (key, self._value_for_db(subvalue, subfield,
                                              subkind, db_subtype, lookup))
-                    for key, subvalue in value.iteritems())
+                    for key, subvalue in six.iteritems(value))
 
                 # Return just a dict, a once-flattened list;
                 if db_type == 'dict':
@@ -516,7 +518,7 @@ class NonrelDatabaseOperations(BaseDatabaseOperations):
             if db_type == 'list':
                 value = zip(value[::2], value[1::2])
             else:
-                value = value.iteritems()
+                value = six.iteritems(value)
 
             # DictField needs to hold a dict.
             return dict(
